@@ -91,6 +91,17 @@ Dropdown (volume)
 <md-select ng-style="volume" ng-item-name="itemVolume"></md-select>
 ```
 
+Tabs
+
+![alt text](https://raw.githubusercontent.com/dawys/habpanel/master/screenshots/tabs.png)
+```
+<md-tabs ng-model="heatingTypeIndex" ng-change="setHeatingType(heatingTypeIndex)">
+  <md-pane ng-repeat="(name, title) in heatingTypes">
+    {{title}}
+  </md-pane>
+</md-tabs>
+```
+
 Block rollershutter
 
 ![alt text](https://raw.githubusercontent.com/dawys/habpanel/master/screenshots/block-rollershutter.png)
