@@ -1,6 +1,6 @@
 # HabPanel config
 
-HabPanel config for Openhab2
+HabPanel config for OpenHAB2
 
 ## Usage
 
