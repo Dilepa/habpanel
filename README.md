@@ -1,6 +1,6 @@
 # HabPanel config
 
-HabPanel config for Openhab2
+HabPanel config for OpenHAB2
 
 ## Usage
 
@@ -91,36 +91,69 @@ Dropdown (volume)
 <md-select ng-style="volume" ng-item-name="itemVolume"></md-select>
 ```
 
+Tabs
+
+![alt text](https://raw.githubusercontent.com/dawys/habpanel/master/screenshots/tabs.png)
+```
+<md-tabs ng-model="heatingTypeIndex" ng-change="setHeatingType(heatingTypeIndex)">
+  <md-pane ng-repeat="(name, title) in heatingTypes">
+    {{title}}
+  </md-pane>
+</md-tabs>
+```
+
 Block rollershutter
 
 ![alt text](https://raw.githubusercontent.com/dawys/habpanel/master/screenshots/block-rollershutter.png)
 ```
-<div class="block">
-  <div class="widget two-columns">
-    <h2>Position:</h2>
-    <div class="position">
-      <span ng-repeat="n in [1,2,3,4,5,6,7,8,9,10,11,12]" class="lamella"></span>
-      <span class="suspension"></span>
-      <span class="suspension"></span>
+<div class="custom full-height rollershutter" oc-lazy-load="['/static/habpanel/custom.css','/static/habpanel/jquery-3.2.1.min.js','/static/habpanel/custom.js']">
+  
+  <div class="section" ng-controller="rollershutter as vm">
+    <div class="title">
+      <h1>
+        {{ngModel.name}}
+      	<div class="uninitialized" ng-class="{'active':itemState(config.rollerShutterItemName) === 'NULL'}">
+          <svg viewBox="0 0 48 48">
+            <use xlink:href="/static/habpanel/svg/icons.svg#warning"></use>
+          </svg>
+        </div>
+      </h1>
+      <div class="icon">
+        <div>
+          <svg viewBox="-16 0 48 48">
+            <use xlink:href="/static/habpanel/svg/icons.svg#heating"></use>
+          </svg>
+        </div>
+      </div>
     </div>
-    <md-button-group ng-model="vm.rollerShutterPosition" ng-values="[0, 25, 50, 75, 100]" ng-change="setPosition()">
-      <md-button>offen</md-button>
-      <md-button>25%</md-button>
-      <md-button>50%</md-button>
-      <md-button>75%</md-button>
-      <md-button>100%</md-button>
-    </md-button-group>
-  </div>
-  <div class="widget two-columns">
-    <h2>Ausrichtung:</h2>
-    <div class="alignment">
-      <span ng-repeat="n in [1,2,3]" class="lamella"></span>
-      <span class="suspension"></span>
+    <div class="block">
+      <div class="widget two-columns">
+        <h2>Position:</h2>
+        <div class="position">
+          <span ng-repeat="n in [1,2,3,4,5,6,7,8,9,10,11,12]" class="lamella"></span>
+          <span class="suspension"></span>
+          <span class="suspension"></span>
+        </div>
+        <md-button-group ng-model="vm.rollerShutterPosition" ng-values="[0, 25, 50, 75, 100]" ng-change="setPosition()">
+          <md-button>offen</md-button>
+          <md-button>25%</md-button>
+          <md-button>50%</md-button>
+          <md-button>75%</md-button>
+          <md-button>100%</md-button>
+        </md-button-group>
+      </div>
+      <div class="widget two-columns">
+        <h2>Ausrichtung:</h2>
+        <div class="alignment">
+          <span ng-repeat="n in [1,2,3]" class="lamella"></span>
+          <span class="suspension"></span>
+        </div>
+        <md-button-group ng-model="vm.rollerShutterAlignment" ng-values="['ON', 'OFF']" ng-change="setAlignment()">
+          <md-button>offen</md-button>
+          <md-button>blickdicht</md-button>
+        </md-button-group>
+      </div>
     </div>
-    <md-button-group ng-model="vm.rollerShutterAlignment" ng-values="['ON', 'OFF']" ng-change="setAlignment()">
-      <md-button>offen</md-button>
-      <md-button>blickdicht</md-button>
-    </md-button-group>
   </div>
 </div>
 ```
