@@ -106,6 +106,19 @@
 	color: var(--ninth-background-color);
 }
 
+.drawer.snap-drawer.snap-drawer-left {
+	background-color: var(--second-background-color);
+}
+
+.drawer.snap-drawer.snap-drawer-left > ul > li {
+	background-color: var(--third-background-color);
+	border-bottom-color: var(--second-background-color);
+}
+
+.drawer.snap-drawer.snap-drawer-left > ul > li.active, .drawer.snap-drawer.snap-drawer-left > ul > li:hover {
+	background-color: var(--first-background-color);
+}
+
 .box .chart .line-series path {
     stroke-width: 2px;
 }
